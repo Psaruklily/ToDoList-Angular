@@ -1,0 +1,43 @@
+@mixin bg-border($bg, $border) {
+    background: $bg;
+    border-color: $border;
+}
+
+.container {
+    h4 {
+        margin: 0px;
+        padding: 15px 0px;
+    }
+    .wrap-for-input-buttons {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        input {
+            width: 980px;
+            border: 1px solid rgb(201, 188, 188);
+            border-radius: 2px;
+            margin-right: 19px;
+        }
+        button {
+            border: 1px solid;
+            border-radius: 3px;
+            width: 110px;
+            height: 31px;
+            color: #fff;
+        }
+    }
+}
+
+.save-btn {
+    @include bg-border(#156b21, #156b21);
+}
+
+.update-btn {
+    margin-bottom: 5px;
+    @include bg-border( #007bff, #007bff)
+}
+
+.сlean-up {
+    @include bg-border(#cc2b40, #cc2b40)
+}

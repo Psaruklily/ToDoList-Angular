@@ -1,0 +1,17 @@
+.header {
+    background: rgb(22, 16, 51);
+    height: 70px;
+    padding: 10px 84px;
+    div {
+        img {
+            height: 50px;
+            margin: 0px 25px 0px 45px;
+            position: relative;
+            bottom: 11px;
+        }
+        h1 {
+            display: inline-block;
+            color: #fff;
+        }
+    }
+}
