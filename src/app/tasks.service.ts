@@ -19,6 +19,10 @@ export class TasksService {
     this.tasksRef.push(newTask);
   }
 
+  deleteTask(key: string): Promise<void>{
+    return this.tasksRef.remove(key);
+  }
+
   getTaskList(): AngularFireList<TemplateForTask>{
     return this.tasksRef;
   }

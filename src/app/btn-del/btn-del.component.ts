@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import{ TasksService } from '../tasks.service';
 
 @Component({
   selector: 'app-btn-del',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BtnDelComponent implements OnInit {
 
-  constructor() { }
+  @Input() item: any;
+
+  constructor(private tasksService: TasksService) { }
 
   ngOnInit(): void {
+  }
+
+  deleteTask(): void{
+    this.tasksService.deleteTask(this.item.key)
   }
 
 }
