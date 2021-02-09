@@ -4,18 +4,18 @@
     <div class="wrap-for-input-buttons">
         <div>
             <form>
-                <input type="text" name="message">
+                <input type="text" name="message" #input [(ngModel)]="newTask.task">
             </form>
         </div>
         <div>
-            <button type="button" class="save-btn">SAVE</button>
+            <button type="button" class="save-btn" (click)="saveTask()">SAVE</button>
             <!-- <button type="button" class="update-btn display-none">UPDATE</button> -->
         </div>
         <div>
             <button type="button" class="сlean-up">Сlean up</button>
         </div>
     </div>
-    <ul>
-        <app-task></app-task>
+    <ul #list>
+        <!-- <app-task></app-task> -->
     </ul>
 </div>

@@ -18,6 +18,7 @@ import { BtnDelComponent } from './btn-del/btn-del.component';
     BtnUpdateComponent,
     BtnDelComponent
   ],
+  entryComponents: [TaskComponent],
   imports: [
     BrowserModule,
     FormsModule,
