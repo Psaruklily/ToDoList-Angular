@@ -1,6 +1,5 @@
 
-import { Component, ComponentFactoryResolver, OnInit, ViewContainerRef, ViewChild, ElementRef } from '@angular/core';
-import { TaskComponent } from './task/task.component';
+import { Component, OnInit, ViewContainerRef, ViewChild, ElementRef } from '@angular/core';
 import { TasksService } from './tasks.service';
 import { TemplateForTask } from './template-for-task';
 import { map } from 'rxjs/operators';
@@ -18,8 +17,7 @@ export class AppComponent implements OnInit {
   componentRef: any;
   newTask: TemplateForTask = new TemplateForTask();
   taskList: any;
-  constructor(private componentFactoryResolver: ComponentFactoryResolver,
-    private tasksService: TasksService) { }
+  constructor(private tasksService: TasksService) { }
 
   ngOnInit() {
     this.displayTasks();
@@ -42,17 +40,6 @@ export class AppComponent implements OnInit {
     ).subscribe(tasks => {
       this.taskList = tasks;
       console.log(this.taskList)
-      const factory = this.componentFactoryResolver.resolveComponentFactory(TaskComponent);
-      this.componentRef = this.list.createComponent(factory);
-     // this.componentRef.instance.message = 
-
     })
   }
-
-  // addComponent():void{
-  //   const factory = this.componentFactoryResolver.resolveComponentFactory(TaskComponent);
-  //   this.componentRef = this.list.createComponent(factory);
-  // }
-
-
 }

@@ -1,12 +1,10 @@
-<li>
-    <div class="main-div-li">
-        <div class="task">
-            <input type="checkbox" class="checkbox">
-            <p class="task-text">{{message}}</p>
-        </div>
-        <div class="divForButn">
-            <app-btn-update></app-btn-update>
-            <app-btn-del></app-btn-del>
-        </div>
+<div *ngIf="item" class="main-div-li">
+    <div class="task">
+        <input type="checkbox" class="checkbox">
+        <p class="task-text">{{item.task}}</p>
     </div>
-</li>
+    <div class="divForButn">
+        <app-btn-update></app-btn-update>
+        <app-btn-del></app-btn-del>
+    </div>
+</div>
