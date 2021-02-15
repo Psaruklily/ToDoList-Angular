@@ -1,10 +1,10 @@
 <div *ngIf="item" class="main-div-li">
     <div class="task">
-        <input type="checkbox" class="checkbox">
-        <p class="task-text">{{item.task}}</p>
+        <input type="checkbox" class="checkbox" [checked]="item.done" (change)="onChange(item, item.key)">
+        <p class="task-text" [class.done]="item.done">{{item.task}}</p>
     </div>
     <div class="divForButn">
-        <app-btn-update></app-btn-update>
+        <app-btn-update [item]="item" (currentTask)="valueTask(item)"></app-btn-update>
         <app-btn-del [item]="item"></app-btn-del>
     </div>
 </div>

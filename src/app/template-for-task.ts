@@ -1,4 +1,5 @@
 export class TemplateForTask {
   task: string;
-  date = new Date();  
+  date: any = new Date();
+  done: boolean;  
 }

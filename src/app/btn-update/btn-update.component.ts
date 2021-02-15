@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-btn-update',
@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BtnUpdateComponent implements OnInit {
 
+  @Input() item: any;
+  @Output() currentTask = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  replaseTaskInInput(item: any): void {
+    this.currentTask.emit(item);
+  }
 }

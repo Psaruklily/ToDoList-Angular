@@ -13,10 +13,14 @@ export class AppComponent implements OnInit {
 
   @ViewChild('list', { read: ViewContainerRef }) list: ViewContainerRef;
   @ViewChild('input', { static: false }) public input: ElementRef;
-
+  @ViewChild('btnSave', {static: false}) public buttonSave: ElementRef;
+  @ViewChild('btnUpdate', {static: false}) public buttonUpdate: ElementRef;
+  
   componentRef: any;
   newTask: TemplateForTask = new TemplateForTask();
   taskList: any;
+  currentTaskReadyForUpdate: any;
+
   constructor(private tasksService: TasksService) { }
 
   ngOnInit() {
@@ -24,8 +28,9 @@ export class AppComponent implements OnInit {
   }
 
   saveTask(): void {
+   // this.newTask.date = new Date();
+    this.newTask.done = false;
     this.tasksService.createTask(this.newTask);
-    console.log(this.newTask);
     this.input.nativeElement.value = '';
     this.newTask = new TemplateForTask;
   }
@@ -41,5 +46,19 @@ export class AppComponent implements OnInit {
       this.taskList = tasks;
       console.log(this.taskList)
     })
+  }
+
+  updateCurrentTask(item):void{
+    this.currentTaskReadyForUpdate = item;
+    this.input.nativeElement.value = item.task;
+    this.buttonUpdate.nativeElement.classList.remove('display');
+    this.buttonSave.nativeElement.classList.add('display');
+  }
+
+  updateTask(currentTaskReadyForUpdate: any):void{
+    this.tasksService.updateTask(currentTaskReadyForUpdate.key, this.input.nativeElement.value);
+    this.buttonUpdate.nativeElement.classList.add('display');
+    this.buttonSave.nativeElement.classList.remove('display');
+    this.input.nativeElement.value = '';
   }
 }

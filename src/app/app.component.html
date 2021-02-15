@@ -8,14 +8,19 @@
             </form>
         </div>
         <div>
-            <button type="button" class="save-btn" (click)="saveTask()">SAVE</button>
-            <!-- <button type="button" class="update-btn display-none">UPDATE</button> -->
+            <button type="button" #btnSave class="save-btn" (click)="saveTask()">SAVE</button>
+            <button type="button" #btnUpdate class="update-btn display" (click)="updateTask(currentTaskReadyForUpdate)">UPDATE</button>
         </div>
         <div>
             <button type="button" class="сlean-up">Сlean up</button>
         </div>
     </div>
-    <div #list *ngFor="let item of taskList">
-        <app-task [item]="item"></app-task>
+    <div *ngIf="taskList.length; else noTasks">
+        <div #list *ngFor="let item of taskList">
+            <app-task [item]="item" (currentTask)="updateCurrentTask(item)"></app-task>
+        </div>
     </div>
+    <ng-template #noTasks>
+        <p style="text-align: center">No tasks now!</p>
+    </ng-template>
 </div>
